@@ -52,7 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function replaceScreenWithError(errorMessage) {
-    document.body.innerHTML = `<h1>Error</h1><p>${errorMessage}</p>`;
+    document.body.innerHTML = `
+      <style>
+        .error-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          text-align: center;
+        }
+      </style>
+      <div class="error-container">
+        <h1>Error</h1>
+        <p>${errorMessage}</p>
+      </div>
+    `;
     console.error(errorMessage);
   }
+  
 });
