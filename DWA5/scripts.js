@@ -25,24 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const dividend = parseFloat(dividendInput.value);
     const divider = parseFloat(dividerInput.value);
 
+    //If the inputs are not a number then the screen should show an error across the screen
     if (isNaN(dividend) || isNaN(divider)) {
       replaceScreenWithError("Something critical went wrong. Please reload the page");
       console.error("Invalid input provided");
       return;
     }
-
+    //When a divider is less than 0 which in this case is negative
     if (divider < 0) {
       displayError("Division not performed. Invalid number provided. Try again");
       console.error("Division by a negative number");
       return;
     }
-
+    //When the input is empty
     if (!dividendInput.value || !dividerInput.value) {
       displayError("Division not performed. Both values are required in inputs. Try again");
       console.error("Missing input values");
       return;
     }
-
+    //Used to convert a decimal form into a whole number
     const result = Math.floor(dividend / divider);
     resultElement.textContent = result.toString();
   });
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultElement.textContent = message;
   }
 
+  //Used html and css styling
   function replaceScreenWithError(errorMessage) {
     document.body.innerHTML = `
       <style>
