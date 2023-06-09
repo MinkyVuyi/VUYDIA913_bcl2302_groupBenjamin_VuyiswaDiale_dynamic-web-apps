@@ -183,9 +183,9 @@ function initializePage() {
   setThemeBasedOnColorScheme();
 
   const remainingBooks = Math.max(0, books.length - BOOKS_PER_PAGE);
-  const listButton = document.querySelector('[data-list-button]');
+  const listButton = document.querySelectorAll('[data-list-button]');
   listButton.disabled = remainingBooks === 0;
-  listButton.innerText = `List More (${remainingBooks})`;
+  listButton.innerText = `Show More (${remainingBooks})`;
 }
 
 /**
