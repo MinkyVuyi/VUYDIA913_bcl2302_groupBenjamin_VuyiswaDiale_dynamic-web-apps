@@ -62,20 +62,6 @@ function createOptions(data) {
   return optionsFragment;
 }
 
-// Populate genre options
-/**
- * Creates an option element with the specified value and text.
- * @param {string} value - The value of the option.
- * @param {string} text - The text of the option.
- * @returns {HTMLOptionElement} - The created option element.
- */
-function createOptionElement(value, text) {
-  const optionElement = document.createElement('option');
-  optionElement.value = value;
-  optionElement.innerText = text;
-  return optionElement;
-}
-
 /**
  * Renders options in the specified select element.
  * @param {Array} optionsData - The data for the options.
@@ -118,22 +104,74 @@ function renderAuthorOptions() {
   renderOptions(authors, '[data-search-authors]');
 }
 
+/**
+ * Creates an option element with the specified value and text.
+ * @param {string} value - The value of the option.
+ * @param {string} text - The text of the option.
+ * @returns {HTMLOptionElement} - The created option element.
+ */
+function createOptionElement(value, text) {
+  const optionElement = document.createElement('option');
+  optionElement.value = value;
+  optionElement.innerText = text;
+  return optionElement;
+}
 
 /**
  * Sets the theme and color variables based on the preferred color scheme.
  */
 function setThemeBasedOnColorScheme() {
-  const theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'night'
-    : 'day';
-
+  const theme = getPreferredColorScheme();
   const colorDark = theme === 'night' ? '255, 255, 255' : '10, 10, 20';
   const colorLight = theme === 'night' ? '10, 10, 20' : '255, 255, 255';
 
+  setThemeSelection(theme);
+  setThemeColors(colorDark, colorLight);
+}
+
+/**
+ * Retrieves the preferred color scheme based on the user's system settings.
+ * @returns {string} The preferred color scheme ('night' or 'day').
+ */
+function getPreferredColorScheme() {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'night'
+    : 'day';
+}
+
+/**
+ * Sets the selected theme option in the settings form.
+ * @param {string} theme - The selected theme option ('night' or 'day').
+ */
+function setThemeSelection(theme) {
   document.querySelector('[data-settings-theme]').value = theme;
+}
+
+/**
+ * Sets the theme color variables in the CSS.
+ * @param {string} colorDark - The RGB values for the dark color theme.
+ * @param {string} colorLight - The RGB values for the light color theme.
+ */
+function setThemeColors(colorDark, colorLight) {
   document.documentElement.style.setProperty('--color-dark', colorDark);
   document.documentElement.style.setProperty('--color-light', colorLight);
 }
+
+// Set initial theme based on color scheme
+setThemeBasedOnColorScheme();
+
+// Event listener for settings form submission
+document.querySelector('[data-settings-form]').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const { theme } = Object.fromEntries(formData);
+  
+  const colorDark = theme === 'night' ? '255, 255, 255' : '10, 10, 20';
+  const colorLight = theme === 'night' ? '10, 10, 20' : '255, 255, 255';
+
+  setThemeColors(colorDark, colorLight);
+  document.querySelector('[data-settings-overlay]').open = false;
+});
 
 /**
  * Initializes the page.
