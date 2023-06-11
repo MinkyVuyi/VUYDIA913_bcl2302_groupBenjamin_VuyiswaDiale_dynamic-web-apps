@@ -25410,3 +25410,39 @@ export const books = [
     "author": "8e7083f4-7613-4872-a21b-62fbe33fe180"
   }
 ]
+/*
+export const content = {
+  header: {
+    headerSearch: document.querySelector('[data-header-search]'),
+    headerSettings: document.querySelector('[data-header-settings]'),
+  },
+  list: {
+    items: document.querySelector('[data-list-items]'),
+    message: document.querySelector('[data-list-message]'),
+    btnList: document.querySelector('[data-list-button]'),
+  },
+  active: {
+    overlay: document.querySelector('[data-list-active]'),
+    overlayBlur: document.querySelector('[data-list-blur]'),
+    overlayImage: document.querySelector('[data-list-image]'),
+    overlayTitle: document.querySelector('[data-list-title]'),
+    overlaySubtitle1: document.querySelector('[data-list-subtitle]'),
+    overlaySubtitle2: document.querySelector('[data-list-description]'),
+    overlayClose: document.querySelector('[data-list-close]'),
+  },
+  search: {
+    overlay: document.querySelector('[data-search-overlay]'),
+    find: document.querySelector('[data-search-form]'),
+    findTitle: document.querySelector('[data-search-title]'),
+    findGenre: document.querySelector('[data-search-genres]'),
+    findAuthor: document.querySelector('[data-search-authors]'),
+    findCancel: document.querySelector('[data-search-cancel]'),
+  },
+  settings: {
+    overlay: document.querySelector('[data-settings-overlay]'),
+    settingForm: document.querySelector('[data-settings-form]'),
+    settingTheme: document.querySelector('[data-settings-theme]'),
+    settingCancel: document.querySelector('[data-settings-cancel]'),
+  },
+}
+*/
