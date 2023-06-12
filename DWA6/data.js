@@ -25410,7 +25410,11 @@ export const books = [
     "author": "8e7083f4-7613-4872-a21b-62fbe33fe180"
   }
 ]
-/*
+
+/**
+ * Contains references to all the HTML elements referenced through the operation of the website either upon 
+ *  while its running (via event listeners).
+ */
 export const content = {
   header: {
     headerSearch: document.querySelector('[data-header-search]'),
@@ -25445,4 +25449,3 @@ export const content = {
     settingCancel: document.querySelector('[data-settings-cancel]'),
   },
 }
-*/
