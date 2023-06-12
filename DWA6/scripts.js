@@ -52,34 +52,36 @@ function renderRemainingBookPreviews() {
     fragment.appendChild(element);
   }
 
-  document.querySelector('[data-list-items]').appendChild(renderRemainingBookPreviews);
+  document.querySelector('[data-list-items]').appendChild(fragment);
   page += 1;
-}
+  updateShowMoreButton();
+} 
+  document.querySelector('[data-search-form]').addEventListener('submit', handleSearchFormSubmit);
+
 
 function loadMoreBooks() {
-    const fragment = document.createDocumentFragment();
-  
-    for (const { author, id, image, title } of matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE)) {
-      const element = document.createElement('button');
-      element.classList = 'preview';
-      element.setAttribute('data-preview', id);
-  
-      element.innerHTML = `
-        <img class="preview__image" src="${image}" />
-        <div class="preview__info">
-          <h3 class="preview__title">${title}</h3>
-          <div class="preview__author">${authors[author]}</div>
-        </div>
-      `;
-  
-      fragment.appendChild(element);
-    }
-  
-    document.querySelector('[data-list-items]').appendChild(fragment);
-    page += 1;
-    updateShowMoreButton();
+  const fragment = document.createDocumentFragment();
+
+  for (const { author, id, image, title } of matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE)) {
+    const element = document.createElement('button');
+    element.classList = 'preview';
+    element.setAttribute('data-preview', id);
+
+    element.innerHTML = `
+      <img class="preview__image" src="${image}" />
+      <div class="preview__info">
+        <h3 class="preview__title">${title}</h3>
+        <div class="preview__author">${authors[author]}</div>
+      </div>
+    `;
+
+    fragment.appendChild(element);
   }
 
+  document.querySelector('[data-list-items]').appendChild(fragment);
+  page += 1;
+  updateShowMoreButton();
+}
 
 /**
  * Updates the "Show more" button based on the remaining matches and page.
@@ -89,7 +91,7 @@ function updateShowMoreButton() {
   const showMoreButton = document.querySelector('[data-list-button]');
   showMoreButton.disabled = remainingMatches < 1;
   showMoreButton.innerHTML = `
-    <span>Show more</span>
+    <span>Show More</span>
     <span class="list__remaining"> (${remainingMatches > 0 ? remainingMatches : 0})</span>
   `;
 }
@@ -158,6 +160,19 @@ function handleSearchFormSubmit(event) {
 }
 
 /**
+ * Handles the click event on book previews.
+ * @param {Event} event - The click event.
+ */
+function handleBookPreviewClick(event) {
+  const previewButton = event.target.closest('[data-preview]');
+  if (previewButton) {
+    const bookId = previewButton.getAttribute('data-preview');
+    // Handle the book preview click event
+    console.log('Book preview clicked:', bookId);
+  }
+}
+
+/**
  * Initializes the page.
  */
 function initializePage() {
@@ -206,37 +221,11 @@ function initializePage() {
   }
 
   document.querySelector('[data-list-button]').innerText = `Show more (${books.length - BOOKS_PER_PAGE})`;
-  updateShowMoreButton();
 
-  document.querySelector('[data-search-cancel]').addEventListener('click', closeSearchOverlay);
-
-  // Add event listeners...
-  document.querySelector('[data-header-search]').addEventListener('click', toggleSearchOverlay);
-  document.querySelector('[data-header-settings]').addEventListener('click', () => {
-    document.querySelector('[data-settings-overlay]').open = true;
-  });
-  document.querySelector('[data-settings-cancel]').addEventListener('click', () => {
-    document.querySelector('[data-settings-overlay]').open = false;
-  });
-  document.querySelector('[data-settings-form]').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const { theme } = Object.fromEntries(formData);
-
-    if (theme === 'night') {
-      document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-      document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-    } else {
-      document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-      document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-    }
-
-    document.querySelector('[data-settings-overlay]').open = false;
-  });
-  document.querySelector('[data-list-button]').addEventListener('click', loadMoreBooks);
+  document.querySelector('[data-search-button]').addEventListener('click', toggleSearchOverlay);
+  document.querySelector('[data-search-form]').addEventListener('submit', handleSearchFormSubmit);
   document.querySelector('[data-list-items]').addEventListener('click', handleBookPreviewClick);
+  document.querySelector('[data-list-button]').addEventListener('click', loadMoreBooks);
 }
 
-// Initialize the page
 initializePage();
-
