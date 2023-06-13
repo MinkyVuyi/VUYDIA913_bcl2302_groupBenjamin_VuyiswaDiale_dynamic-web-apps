@@ -233,8 +233,8 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
     <span>Show more</span>
     <span class="list__remaining">
       (${(matches.length - page * BOOKS_PER_PAGE) > 0
-        ? matches.length - page * BOOKS_PER_PAGE
-        : 0})
+      ? matches.length - page * BOOKS_PER_PAGE
+      : 0})
     </span>
   `;
 
@@ -270,11 +270,11 @@ document.querySelector('[data-list-button]').addEventListener('click', () => {
 
   // Update the HTML content of the list button, including the remaining count
   document.querySelector('[data-list-button]').innerHTML = `
-    <span>Show more</span>
+    <span>Show More</span>
     <span class="list__remaining">
       (${(matches.length - page * BOOKS_PER_PAGE) > 0
-        ? matches.length - page * BOOKS_PER_PAGE
-        : 0})
+      ? matches.length - page * BOOKS_PER_PAGE
+      : 0})
     </span>
   `;
 });
