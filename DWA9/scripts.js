@@ -1,8 +1,5 @@
 import { BOOKS_PER_PAGE, authors, books, genres } from "./data.js";
 
-// scripts.js
-
-
 // Initialize page and matches
 let page = 1;
 let matches = books;
