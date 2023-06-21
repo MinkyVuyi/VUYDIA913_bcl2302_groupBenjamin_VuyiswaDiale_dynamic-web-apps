@@ -83,4 +83,4 @@ class BookPreview extends HTMLElement {
 }
 
 // To define the custom element "book-preview" and associate it with the BookPreview class
-customElements.define("book-preview", BookPreview);
+customElements.define("book-preview", BookPreview);
