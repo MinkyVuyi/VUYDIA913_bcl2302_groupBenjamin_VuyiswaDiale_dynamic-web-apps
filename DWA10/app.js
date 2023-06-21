@@ -44,6 +44,6 @@ subtract.addEventListener('click', subtractHandler)
 
 add.addEventListener('click', addHandler)
 
-reset.addEventListener("click", resetHandler);
+reset.removeEventListener("click", resetHandler);
 
 reset.subtractEventListener("click", resetHandler);

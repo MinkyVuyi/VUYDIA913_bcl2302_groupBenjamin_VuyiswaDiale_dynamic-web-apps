@@ -25,7 +25,7 @@ class BookPreview extends HTMLElement {
     // Parse the book data from the "data-book" attribute
     const book = JSON.parse(this.getAttribute("data-book"));
 
-    // Set the content of the shadow DOM
+    // Setting the content of the shadow DOM
     this.shadowRoot.innerHTML = `
        <style>
         :host {
@@ -75,12 +75,12 @@ class BookPreview extends HTMLElement {
       <img class="preview__image" src="${book.image}" />
       <div class="preview__info">
         <h3 class="preview__title">${book.title}</h3>
-        <div class="preview__author">${book.author.name}</div>
+        <div class="preview__author">${book.authorName}</div>
       </div>
   
     `;
   }
 }
 
-// Define the custom element "book-preview" and associate it with the BookPreview class
-customElements.define("book-preview", BookPreview);
+// To define the custom element "book-preview" and associate it with the BookPreview class
+customElements.define("book-preview", BookPreview);
