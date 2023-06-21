@@ -6,13 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tally Count</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.5.0/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.5.0/cdn/shoelace-autoloader.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
@@ -21,22 +22,19 @@
   </header>
 
   <aside class="controls">
-    <label>
-      <span>Display</span>
-      <sl-select>
-        <sl-menu-item>Single</sl-menu-item>
-        <sl-menu-item>Multiple</sl-menu-item>
-      </sl-select>
-    </label>
+    <sl-select>
+      <span slot="label">Display</span>
+      <sl-menu-item>Single</sl-menu-item>
+      <sl-menu-item>Multiple</sl-menu-item>
+    </sl-select>
 
-    <label>
-      <span>Counter</span>
-      <sl-select>
-        <sl-menu-item>Counter 1</sl-menu-item>
-        <sl-menu-item>Counter 2</sl-menu-item>
-        <sl-menu-item>Counter 3</sl-menu-item>
-      </sl-select>
-    </label>
+    <sl-select>
+      <span slot="label">Counter</span>
+      <sl-menu-item>Counter 1</sl-menu-item>
+      <sl-menu-item>Counter 2</sl-menu-item>
+      <sl-menu-item>Counter 3</sl-menu-item>
+    </sl-select>
+
     <sl-button>Settings</sl-button>
   </aside>
 
@@ -45,9 +43,7 @@
     <div class="counter__actions">
       <sl-button data-key="subtract" class="counter__button counter__button_first">-</sl-button>
       <sl-button data-key="add" class="counter__button">+</sl-button>
-      <div class="res">
-        <sl-button data-key="reset" class="reset">Reset</sl-button>
-      </div>
+      <sl-button data-key="reset" class="counter__button">Reset</sl-button>
     </div>
   </main>
 

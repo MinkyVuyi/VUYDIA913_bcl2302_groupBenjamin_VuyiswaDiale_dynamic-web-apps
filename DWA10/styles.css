@@ -4,17 +4,17 @@
     --color-dark-grey: #303036;
     --color-medium-grey: #4b4b56;
     --color-light-grey: #9a9ea4;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-    
-    html {
-        height: 100vh;
-    }
-    
-    body {
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100vh;
+  }
+  
+  body {
     margin: 0;
     background-color: var(--color-medium-grey);
     color: var(--color-white);
@@ -23,55 +23,63 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    }
-    
-    /*header*/
-    
-    .header {
-        text-align: center;  
-    }
-    
-    .header__title {
-        font-size: 3rem;
-        font-weight: 900;
-        color: var(--color-green);
-    }
-    
-    /*controls*/
-    
-    .controls {
-        background-color: var(--color-green) ;
-        text-align: right;
-        font-weight: bold;
-        color: var(--color-dark-grey);
-    }
-    
-    /*counter*/
-    
-    .counter {
-        background-color: var(--color-dark-grey);
-    }
-    
-    .counter__value {
-        width: 100%;
-        height: 15rem;
-        text-align: center;
-        font-size: 6rem;
-        font-weight: 900;
-        background: none;
-        background-color: aquamarine;
-        color: black;
-        border-width: 0;
-        border-bottom: 1px solid var(--color-light-grey);
-    }
-    
-    .counter__actions {
-    display: flex;
-    }
-    
-    .counter__button {
+  }
+  
+  /*header*/
+  
+  .header {
+    text-align: center;
+  }
+  
+  .header__title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-green);
+  }
+  
+  /*controls*/
+  
+  .controls {
+    background-color: var(--color-green);
+    text-align: right;
+    font-weight: bold;
+    color: var(--color-dark-grey);
+    padding: 1rem;
+  }
+  
+  .controls sl-select {
+    margin-bottom: 1rem;
+  }
+  
+  /*counter*/
+  
+  .counter {
+    background-color: var(--color-dark-grey);
+    padding: 2rem;
+  }
+  
+  .counter__value {
+    width: 100%;
+    height: 15rem;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 900;
     background: none;
-    width: 50%;
+    background-color: aquamarine;
+    color: black;
+    border-width: 0;
+    border-bottom: 1px solid var(--color-light-grey);
+  }
+  
+  .counter__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .counter__button {
+    background: none;
+    width: calc(33.33% - 0.5rem);
     border-width: 0;
     color: var(--color-white);
     font-size: 3rem;
@@ -80,45 +88,33 @@
     transition: transform 0.3s;
     transform: translateY(0);
     font-weight: bold;
-    }
-    
-    .counter__button:disabled {
-        opacity: 0.2;
-    }
-    
-    .counter__button:active {
+  }
+  
+  .counter__button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+  
+  .counter__button:active {
     background: var(--color-medium-grey);
     transform: translateY(2%);
-    }
-    
-    .counter__button_first {
-        border-right: 1px solid var(--color-light-grey);
-    }
-    .res {
-        font-size: 1rem;
-        text-align: center;
-        
-    }
-    .reset{
-        font-size: larger;
-        background-color: #424250;
-        color: #ffffff;
-    }
-    
-    
-
-    /*footer*/
-    
-    .footer {
-        background-color: var(--color-dark-grey);
-        color: var(--color-light-grey);
-        padding: 2rem;
-        font-size: 0.8rem;
-        text-align: center; 
-    }
-    
-    .footer__link {
-        color: var(--color-green)
-    }
-
-    
+  }
+  
+  .counter__button_first {
+    border-right: 1px solid var(--color-light-grey);
+  }
+  
+  /*footer*/
+  
+  .footer {
+    background-color: var(--color-dark-grey);
+    color: var(--color-light-grey);
+    padding: 2rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .footer__link {
+    color: var(--color-green);
+  }
+  

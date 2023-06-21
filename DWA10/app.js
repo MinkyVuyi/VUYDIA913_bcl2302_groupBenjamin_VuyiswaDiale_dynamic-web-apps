@@ -1,49 +1,38 @@
-const MAX_NUMBER = 50
-const MIN_NUMBER = -10
-
-
-const number = document.querySelector('[data-key="number"]')
-const subtract = document.querySelector('[data-key="subtract"]')
-const add = document.querySelector('[data-key="add"]')
-const reset = document.querySelector('[data-key="reset"]');
-
-const resetHandler = () => {
-    number.value = 0;
-    subtract.disabled = false;
-    add.disabled = false;
-}
-
-
-const subtractHandler = () => {
-    const newValue = parseInt(number.value) - 1
-    number.value = newValue
-
-    if (add.disabled === true) {
-        add.disable = false
+const updateCounterValue = () => {
+    const number = document.querySelector('sl-input[data-key="number"]');
+    if (number) {
+  
     }
-
-    if (newValue <= MIN_NUMBER) {
-        subtract.disabled = true
+  };
+  
+  const subtract = document.querySelector('sl-button[data-key="subtract"]');
+  const add = document.querySelector('sl-button[data-key="add"]');
+  const reset = document.querySelector('sl-button[data-key="reset"]');
+  
+  const subtractHandler = () => {
+    const number = document.querySelector('sl-input[data-key="number"]');
+    if (number) {
+      const newValue = parseInt(number.value) - 1;
+      number.value = newValue;
     }
-}
-
-const addHandler = () => {
-    const newValue = parseInt(number.value) + 1
-    number.value = newValue 
-
-    if (subtract.disable === true) {
-        subtract.disable = false
+  };
+  
+  const addHandler = () => {
+    const number = document.querySelector('sl-input[data-key="number"]');
+    if (number) {
+      const newValue = parseInt(number.value) + 1;
+      number.value = newValue;
     }
-
-    if (newValue >= MAX_NUMBER) {
-        add.disabled = true
-   }
-}
-
-subtract.addEventListener('click', subtractHandler)
-
-add.addEventListener('click', addHandler)
-
-reset.removeEventListener("click", resetHandler);
-
-reset.subtractEventListener("click", resetHandler);
+  };
+  
+  const resetHandler = () => {
+    const number = document.querySelector('sl-input[data-key="number"]');
+    if (number) {
+      number.value = 0;
+    }
+  };
+  
+  subtract.addEventListener('click', subtractHandler);
+  add.addEventListener('click', addHandler);
+  reset.addEventListener('click', resetHandler);
+  
