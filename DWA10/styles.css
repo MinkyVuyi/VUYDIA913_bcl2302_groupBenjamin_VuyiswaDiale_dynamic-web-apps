@@ -1,5 +1,5 @@
 :root {
-    --color-green: #31c48d;
+    --color-green: #0a8256;
     --color-white: #ffffff;
     --color-dark-grey: #303036;
     --color-medium-grey: #4b4b56;
@@ -43,7 +43,7 @@ body {
     background-color: var(--color-green);
     text-align: right;
     font-weight: bold;
-    color: var(--color-light-grey);
+    color: var(--color-dark-grey);
     padding: 1rem;
 }
 
