@@ -78,9 +78,10 @@ class TallyApp extends LitElement {
     .footer {
       background-color: var(--color-dark-grey);
       color: var(--color-light-grey);
-      padding: 2rem;
+      padding: 2.5rem;
       font-size: 0.8rem;
       text-align: center;
+      padding-bottom: 100px;
     }
 
     .footer__link {
