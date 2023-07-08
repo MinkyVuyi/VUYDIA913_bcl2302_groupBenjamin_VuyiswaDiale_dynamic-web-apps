@@ -1,6 +1,6 @@
-import Card from "./components/Card";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import Card from "./components/Card.jsx";
+import Hero from "./components/Hero.jsx";
+import Navbar from "./components/Navbar.jsx";
 import React from "react";
 
 export default function App() {
