@@ -1,48 +1,23 @@
-export default function Card() {
+export default function Card(props) {
+    let badgeText
+    if (props.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (props.location === "Online") {
+        badgeText = "ONLINE"
+    }
+    
     return (
-      <div className="card">
-        <div>
-          <img src="./images/katie-zaferes.png" className="card--image" />
-          <div className="card--stats">
-            <img src="../images/star.png" className="card--star" />
-            <span>5.0</span>
-            <span className="gray">(6) • </span>
-            <span className="gray">USA</span>
-          </div>
-          <p>Life Lessons with Katie Zaferes</p>
-          <p>
-            <span className="bold">From $136</span> / person
-          </p>
+        <div className="card">
+            {badgeText && <div className="card--badge">{badgeText}</div>}
+            <img src={`../images/${props.img}`} className="card--image" />
+            <div className="card--stats">
+                <img src="../images/star.png" className="card--star" />
+                <span>{props.rating}</span>
+                <span className="gray">({props.reviewCount}) • </span>
+                <span className="gray">{props.location}</span>
+            </div>
+            <p className="card--title">{props.title}</p>
+            <p className="card--price"><span className="bold">From ${props.price}</span> / person</p>
         </div>
-  
-        <div>
-          <img src="./images/old-bride.png" className="card--image" />
-          <div className="card--stats2">
-            <img src="../images/star.png" className="card--star" />
-            <span>5.0</span>
-            <span className="gray">(30) • </span>
-            <span className="gray">USA</span>
-          </div>
-          <p>Learn wedding photography</p>
-          <p>
-            <span className="bold">From $125</span> / person
-          </p>
-        </div>
-  
-        <div>
-          <img src="./images/bicycle.png" className="card--image" />
-          <div className="card--stats3">
-            <img src="../images/star.png" className="card--star" />
-            <span>4.8</span>
-            <span className="gray">(2) • </span>
-            <span className="gray">USA</span>
-          </div>
-          <p>Group Mountain Biking</p>
-          <p>
-            <span className="bold">From $50</span> / person
-          </p>
-        </div>
-      </div>
-    );
-  }
-  
+    )
+}

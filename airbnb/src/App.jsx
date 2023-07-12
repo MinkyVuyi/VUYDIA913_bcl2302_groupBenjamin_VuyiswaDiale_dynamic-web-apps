@@ -1,14 +1,33 @@
-import Card from "./components/Card.jsx";
-import Hero from "./components/Hero.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Card from "./components/Card";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
 import React from "react";
+import data from "./data";
 
 export default function App() {
-  return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Card />
-    </div>
-  );
+    const cards = data.map(item => {
+        return (
+            <Card
+                key={item.id}
+                img={item.coverImg}
+                rating={item.stats.rating}
+                reviewCount={item.stats.reviewCount}
+                location={item.location}
+                title={item.title}
+                price={item.price}
+                openSpots={item.openSpots}
+            />
+        )
+    })        
+    
+          
+    return (
+        <div>
+            <Navbar />
+            <Hero />
+            <section className="cards-list">
+                {cards}
+            </section>
+        </div>
+    )
 }
