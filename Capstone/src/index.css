@@ -1,0 +1,29 @@
+.podcast-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.podcast {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.podcast img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.podcast h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.podcast p {
+  margin: 5px 0;
+}
+
