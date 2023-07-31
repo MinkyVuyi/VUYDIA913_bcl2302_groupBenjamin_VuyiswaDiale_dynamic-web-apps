@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import PodcastList from './components/PodcastList';
+//import { createClient } from "@supabase/supabase-js";
+
+// const supabaseUrl = "YOUR_SUPABASE_PROJECT_URL";
+// const supabaseKey = "YOUR_SUPABASE_PROJECT_API_KEY";
+// const supabase = createClient(supabaseUrl, supabaseKey);
 
 const App = () => {
   const [podcasts, setPodcasts] = useState([]);

@@ -1,54 +1,22 @@
-// import React, { useEffect, useState } from 'react';
-// import Header from './components/Header';
-// import PodcastList from './components/PodcastList';
-
-// const App = () => {
-//   const [podcasts, setPodcasts] = useState([]);
-
-//   useEffect(() => {
-//     // Fetch data from the API when the component mounts
-//     fetch('https://podcast-api.netlify.app/shows')
-//       .then((response) => response.json())
-//       .then((data) => setPodcasts(data));
-//   }, []);
-
-//   return (
-//     <div>
-//       <Header />
-//       <h1>Podcast App</h1>
-//       <PodcastList podcasts={podcasts} />
-//     </div>
-//   );
-// };
-
+// src/App.js
 import React from "react";
-import { useState } from "react";
-import { getShows, getEpisodes } from "./api";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PodcastList from "./components/PodcastList";
+import PodcastDetails from "./components/ShowDetails";
+import Favorites from "./components/Favorites";
 
-const App = () => {
-  const [shows, setShows] = useState([]);
-
-  const handleGetShows = () => {
-    setShows(getShows());
-  };
-
-  const handleGetEpisodes = (showId) => {
-    setShows(getEpisodes(showId));
-  };
-
+function App() {
   return (
-    <div>
-      <button onClick={handleGetShows}>Get Shows</button>
-      <ul>
-        {shows.map((show) => (
-          <li key={show.id}>{show.title}</li>
-        ))}
-      </ul>
-      <button onClick={() => handleGetEpisodes(shows[0].id)}>
-        Get Episodes
-      </button>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/" exact component={PodcastList} />
+          <Route path="/podcast/:id" component={PodcastDetails} />
+          <Route path="/favorites" component={Favorites} />
+        </Switch>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
