@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const PodcastItem = ({ podcast, isFavorite, onToggleFavorite }) => {
+const PodcastItem = ({ podcast, onToggleFavorite }) => {
   const handleToggleFavorite = () => {
     onToggleFavorite(podcast);
   };
