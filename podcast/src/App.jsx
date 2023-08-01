@@ -76,6 +76,7 @@ const App = () => {
       <ShowSeasons>
         {renderShowSeasons(ShowSeasons)}
       </ShowSeasons>
+      <ShowSeasonListItem season={seasonData} />
     </div>
   );
 };
