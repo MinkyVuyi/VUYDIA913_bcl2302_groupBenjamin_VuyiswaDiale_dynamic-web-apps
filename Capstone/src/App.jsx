@@ -2,8 +2,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PodcastList from "./components/PodcastList";
-import PodcastDetails from "./components/ShowDetails";
+import ShowDetails from "./components/ShowList";
 import Favorites from "./components/Favorites";
+
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <div>
         <Switch>
           <Route path="/" exact component={PodcastList} />
-          <Route path="/podcast/:id" component={PodcastDetails} />
+          {/* Corrected route path to use ShowDetails instead of PodcastDetails */}
+          <Route path="/podcast/:id" component={ShowDetails} />
           <Route path="/favorites" component={Favorites} />
         </Switch>
       </div>
