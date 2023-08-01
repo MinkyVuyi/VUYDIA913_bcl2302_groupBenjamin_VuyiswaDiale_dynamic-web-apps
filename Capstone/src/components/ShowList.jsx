@@ -1,38 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
-const ShowDetails = () => {
-  const { showId } = useParams();
-  const [show, setShow] = useState(null);
+const ShowList = () => {
+  const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchShowDetails = async () => {
-      try {
-        const response = await fetch(`https://podcast-api.netlify.app/shows/${showId}`);
-        const data = await response.json();
-        setShow(data);
+    fetch('https://podcast-api.netlify.app/shows')
+      .then(response => response.json())
+      .then(data => {
+        setShows(data);
         setLoading(false);
-      } catch (error) {
-        console.error('Error fetching show details:', error);
+      })
+      .catch(error => {
+        console.error('Error fetching show data:', error);
         setLoading(false);
-      }
-    };
-
-    fetchShowDetails();
-  }, [showId]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+      });
+  }, []);
 
   return (
     <div>
-      <h2>{show.title}</h2>
-      <p>Last Updated: {show.lastUpdated}</p>
-      {/* Display show details, seasons, and episodes here */}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {shows.map(show => (
+            <li key={show.id}>{show.title}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
 
-export default ShowDetails;
+export default ShowList;
