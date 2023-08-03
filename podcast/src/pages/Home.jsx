@@ -44,24 +44,24 @@ export default function Home() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul className="show-list">
+        <div className="row">
           {showPodcast.map((show) => (
-            <li key={show.id}>
+            <div key={show.id} className="col-md-4 mb-4">
               <a href={`/show/${show.id}`} className="show-link">
-                <div className="show-info">
-                  <img src={show.image} className="show-image" alt={show.title} />
-                  <div className="show-details">
-                    <h3 className="show-title">{show.title}</h3>
-                    <p className="show-description">{show.description}</p>
+                <div className="card h-100 shadow">
+                  <img src={show.image} className="card-img-top" alt={show.title} />
+                  <div className="card-body">
+                    <h3 className="card-title">{show.title}</h3>
+                    <p className="card-text">{show.description}</p>
                     <p>Genre: {getGenres(show.genres)}</p>
-                    <p className="show-seasons">Numbers of seasons: {show.seasons}</p>
-                    <p className="show-updated">Updated: {show.updated}</p>
+                    <p>Numbers of seasons: {show.seasons}</p>
+                    <p>Updated: {show.updated}</p>
                   </div>
                 </div>
               </a>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

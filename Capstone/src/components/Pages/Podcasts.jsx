@@ -26,9 +26,6 @@ const Podcasts = () => {
       });
   }, []);
 
-  const handleFilterChange = (selectedFilter) => {
-    setFilter(selectedFilter);
-  };
 
   const sortShows = (a, b) => {
     if (filter === 'A-Z') {
@@ -61,45 +58,19 @@ const Podcasts = () => {
     return <div>Loading...</div>;
   }
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const filteredShows = shows.filter((show) =>
-      show.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setShows(filteredShows);
-  };
 
   return (
     <div className="container">
       <h2>All Shows</h2>
       <div className="row mb-3">
-        <div className="col">
-          <div className="btn-group">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort by
-            </button>
-            <ul className="dropdown-menu">
-              <li><button className="dropdown-item" onClick={() => handleFilterChange('A-Z')}>A-Z</button></li>
-              <li><button className="dropdown-item" onClick={() => handleFilterChange('Z-A')}>Z-A</button></li>
-              <li><button className="dropdown-item" onClick={() => handleFilterChange('ascending')}>Ascending Order</button></li>
-              <li><button className="dropdown-item" onClick={() => handleFilterChange('descending')}>Descending Order</button></li>
-            </ul>
-          </div>
-        </div>
-        <div className="col">
-          <form className="d-flex mx-auto" onSubmit={handleSearch}>
-            <input className="form-control  rounded-pill border border-5 fs-2 ms-5" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-secondary ms-3" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
+        {/* ... (previous code) */}
       </div>
       <div className="row">
         {shows.sort(sortShows).map((show) => (
           <div key={show.id} className="col-md-3 mb-4">
             <Link className="link-underline link-underline-opacity-0" to={`/podcasts/${show.id}`}>
-              <div className="card" style={{ width: '18rem' }}>
+              <div className="card bg-light shadow-sm" style={{ width: '18rem' }}>
+                {/* Use 'bg-light' class for light background color and 'shadow-sm' class for a small box shadow */}
                 <img src={show.image} alt={show.title} className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title">{show.title}</h5>
@@ -130,6 +101,7 @@ const Podcasts = () => {
     </div>
   );
 };
+
 
 function formatDate(dateString) {
   const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
