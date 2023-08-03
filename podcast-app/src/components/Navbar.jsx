@@ -1,7 +1,7 @@
 import React from 'react';
-import './Header.css'; // Import the custom CSS file for header styles
+import './Navbar.css'; // Import the custom CSS file for header styles
 
-const Header = () => {
+const Navbar = () => {
   return (
     <header className="app-header">
       <nav>
@@ -15,4 +15,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
